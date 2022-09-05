@@ -9,7 +9,7 @@ from thonny import get_workbench
 
 name = "thonny-black-formatter"
 
-ErrorMessage = namedtuple("ErrorMessage", ["error_type", "description"])
+ErrorMessage = namedtuple("ErrorMessage", ["error_type", "description"])  # NOSONAR
 
 SUCCESS = "All done!"
 
