@@ -1,12 +1,13 @@
 import subprocess
 import sys
 import os
+
 from collections import namedtuple
 
 from tkinter.messagebox import showinfo
 from thonny import get_workbench
 
-name = "thonny-black-format"
+name = "thonny-black-formatter"
 
 ErrorMessage = namedtuple("ErrorMessage", ["error_type", "description"])
 
@@ -21,24 +22,6 @@ NOT_COMPATIBLE = ErrorMessage(
     "File not compatible!",
     "Looks like this is not a python file. Did you already save it?",
 )
-
-# Temporary fix: this function comes from thonny.running, but importing that
-# module may conflict with outdated Thonny installations from some Linux
-# repositories.
-# TODO: change this with thonny.running.get_interpreter_for_subprocess when
-# possible and change Thonny version required.
-_console_allocated = False
-
-
-def get_interpreter_for_subprocess(candidate=None):
-    if candidate is None:
-        candidate = sys.executable
-
-    pythonw = candidate.replace("python.exe", "pythonw.exe")
-    if not _console_allocated and os.path.exists(pythonw):
-        return pythonw
-    else:
-        return candidate.replace("pythonw.exe", "python.exe")
 
 
 class BlackFormat:
@@ -55,6 +38,16 @@ class BlackFormat:
         """Get the workbench to be later used to detect the file to format."""
         self.workbench = get_workbench()
 
+    def prepare_run_environment(self):
+        plugins_folders = [folder for folder in sys.path if "plugins" in folder]
+        plugins_folder = os.path.join(plugins_folders[0])
+        binfolder = plugins_folder.replace("lib/python/site-packages", "bin")
+
+        os.environ["PYTHONPATH"] = plugins_folder + (
+            ":" + os.environ["PYTHONPATH"] if os.environ["PYTHONPATH"] else ""
+        )
+        os.environ["PATH"] = binfolder + ":" + plugins_folder + ":" + os.environ["PATH"]
+
     def format_black(self) -> None:
         """Handle the plugin execution."""
         self.editor = self.workbench.get_editor_notebook().get_current_editor()
@@ -68,21 +61,10 @@ class BlackFormat:
             if self.filename is not None and self.filename[-3:] == ".py":
                 self.editor.save_file()
 
-                plugins_folders = [folder for folder in sys.path if "plugins" in folder]
-                plugins_folder = os.path.join(plugins_folders[0])
-                binfolder = plugins_folder.replace("lib/python/site-packages", "bin")
-
-                os.environ["PYTHONPATH"] = plugins_folder + (
-                    ":" + os.environ["PYTHONPATH"] if os.environ["PYTHONPATH"] else ""
-                )
-                os.environ["PATH"] = (
-                    binfolder + ":" + plugins_folder + ":" + os.environ["PATH"]
-                )
+                self.prepare_run_environment()
 
                 format_code = subprocess.run(
                     [
-                        # get_interpreter_for_subprocess(),
-                        # "-m",
                         "black",
                         self.filename,
                     ],
