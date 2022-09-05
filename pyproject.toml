@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "thonny-black-formatter"
+
+version = "0.0.1"
+
+description = "Read the latest Real Python tutorials"
+readme = "README.md"
+authors = [{ name = "Ettore Galli", email = "ettore.galli@nospamplease.com" }]
+
+license = { file = "LICENSE" }
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+
+keywords = ["thonny", "black", "formatter"]
+
+dependencies = [
+    "black",
+]
+
+requires-python = ">=3.9"
+
+[project.optional-dependencies]
+dev = ["pip-tools", "thonny", "bumpver"]
+
+[project.urls]
+Homepage = "https://github.com/ettore-galli/thonny-black-formatter"
+
+
+
