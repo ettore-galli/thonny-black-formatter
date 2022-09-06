@@ -1,4 +1,4 @@
-# thonny-black-formatter
+# Thonny black formater plugin
 Thonny plugin for source formatting with black (Thonny >= 4.x)
 
 This plugin enables formatting with black tool inside Thonny python editor.
@@ -21,22 +21,32 @@ All information available to me related to the original plugin is in the followi
 Github repo: https://github.com/Franccisco/thonny-black-code-format [dead link]
 Docs: https://pypi.org/project/thonny-black-format/
 
-## How the plugin works
-
-### Install the plugin
-
-The plugin must be installed using the Thonny menu:
-
-```Tools -> Manage plug-ins... ```
- 
-### Format your code
-
-The plugin adds the following menu entry:
-
-```Tools -> Format with black... ```
-
-Use this command to format the current source being edited in the active window.
 
 
+## Installation
 
+_Credits for this part of the readme go to the original author Franccisco_
+
+This can be easily installed via Thonny. 
+
+Go to ```Tools -> Manage plug-ins...```, type ```thonny-black-format``` and click on ```Find package from PyPI.``` Install the plugin and restart Thonny.
+
+Alternatively, you can install via pip with ```pip install --user thonny-black-format````
+
+## Usage
+
+_Credits for this part of the readme go to the original author Franccisco_
+
+There are two ways to run the plugin:
+
+1. Go to ```Tools -> Format with Black```
+2. Press ```Ctrl+Alt+c```
+
+All changes will be automatically saved. 
+
+If you prefer, you can undo them.
+
+## Contributing
+
+Contributions are welcome! Feel free to sumbit an issue and/or a pull request.
 

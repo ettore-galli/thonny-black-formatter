@@ -7,9 +7,10 @@ name = "thonny-black-formatter"
 
 version = "0.0.2"
 
-description = "Read the latest Real Python tutorials"
+description = "A plugin to format your python code with Black in Thonny IDE. (For Thonny release >= 4.x)"
+
 readme = "README.md"
-authors = [{ name = "Ettore Galli", email = "ettore.galli@nospamplease.com" }]
+authors = [{ name = "Ettore Galli", email = "ettore.galli@email.it" }]
 
 license = { file = "LICENSE" }
 

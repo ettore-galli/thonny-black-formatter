@@ -18,5 +18,7 @@ python -m build
 twine check dist/*
 
 ### Test Upload to testpi
-
 twine upload -r testpypi dist/*
+
+### Test Upload to testpi
+twine upload dist/*
