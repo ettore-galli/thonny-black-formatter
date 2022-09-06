@@ -6,6 +6,7 @@ from collections import namedtuple
 
 from tkinter.messagebox import showinfo
 from thonny import get_workbench
+from thonny.running import get_front_interpreter_for_subprocess
 
 name = "thonny-black-formatter"
 
@@ -65,6 +66,8 @@ class BlackFormat:
 
                 format_code = subprocess.run(
                     [
+                        get_front_interpreter_for_subprocess(),
+                        "-m",
                         "black",
                         self.filename,
                     ],
