@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "thonny-black-formatter"
 
-version = "0.0.2"
+version = "0.0.3"
 
 description = "A plugin to format your python code with Black in Thonny IDE. (For Thonny release >= 4.x)"
 
 readme = "README.md"
-authors = [{ name = "Ettore Galli", email = "ettore.galli@email.it" }]
+authors = [{ name = "Ettore Galli", email = "ettore.galli@gmail.com" }]
 
 license = { file = "LICENSE" }
 
