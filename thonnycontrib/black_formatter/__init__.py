@@ -1,10 +1,9 @@
+import os
 import subprocess
 import sys
-import os
-
 from collections import namedtuple
-
 from tkinter.messagebox import showinfo
+
 from thonny import get_workbench
 from thonny.running import get_front_interpreter_for_subprocess
 
@@ -45,7 +44,7 @@ class BlackFormat:
         binfolder = plugins_folder.replace("lib/python/site-packages", "bin")
 
         os.environ["PYTHONPATH"] = plugins_folder + (
-            ":" + os.environ["PYTHONPATH"] if os.environ["PYTHONPATH"] else ""
+            ":" + os.environ["PYTHONPATH"] if "PYTHONPATH" in os.environ.keys() else ""
         )
         os.environ["PATH"] = binfolder + ":" + plugins_folder + ":" + os.environ["PATH"]
 
