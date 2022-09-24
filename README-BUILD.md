@@ -20,5 +20,5 @@ twine check dist/*
 ### Test Upload to testpi
 twine upload -r testpypi dist/*
 
-### Test Upload to testpi
+### Test Upload to pypi
 twine upload dist/*
