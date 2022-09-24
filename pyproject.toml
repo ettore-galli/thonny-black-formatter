@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "thonny-black-formatter"
 
-version = "0.0.3"
+version = "0.0.4"
 
 description = "A plugin to format your python code with Black in Thonny IDE. (For Thonny release >= 4.x)"
 
